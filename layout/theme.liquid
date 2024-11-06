@@ -11,10 +11,23 @@
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'application.js' | asset_url | script_tag }}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
   </head>
   <body>
+    {% section 'header' %}
     <main role="main">
+      
       {{ content_for_layout }}
     </main>
   </body>
+
+
 </html>
+
+{% comment %}
+  Layouts são as bases do tema, através deles é que todos os templates são renderizados.
+
+  Dentro de um arquivo de template, eu posso especificar qual layout usar, utilizando a tag {% layout 'custom' %}
+  Porém, se não especificarmos o layout da página, ela irá considerar o layout padrão theme.liquid.
+{% endcomment %}
